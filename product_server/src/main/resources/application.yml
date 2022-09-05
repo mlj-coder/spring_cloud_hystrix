@@ -1,0 +1,23 @@
+server:
+  port: 9001 #服务端口
+spring:
+  application:
+    name: service-product #服务名称
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/springcloud——test?useUnicode=true&characterEncoding=utf8
+    username: root
+    password: 12345678
+  jpa:
+    database: MySQL
+    show-sql: true
+    open-in-view: true
+eureka:
+  client:
+    serviceUrl: # eurekaServer的路径
+      defaultZone: http://localhost:9000/eureka/,http://localhost:8000/eureka/
+  instance:
+    prefer-ip-address: true #使用ip注册
+    instance-id: ${spring.cloud.client.ip-address}:${server.port} #spring.cloud.client.ip-address:获取ip地址 向server发送ip
+    lease-expiration-duration-in-seconds: 10 #eureka client发送心跳给server端后，续约到期时间（默认90秒） 就是如果90秒(默认)没有发送，就认为我宕机了
+    lease-renewal-interval-in-seconds: 5 #发送心跳续约间隔

@@ -1,0 +1,32 @@
+server:
+  port: 9004 #服务端口
+spring:
+  application:
+    name: service-order-feign #服务名称
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/springcloud——test?useUnicode=true&characterEncoding=utf8
+    username: root
+    password: 12345678
+  jpa:
+    database: MySQL
+    show-sql: true
+    open-in-view: true
+eureka:
+  client:
+    serviceUrl: # eureka server的路径
+      defaultZone: http://localhost:9000/eureka/
+  instance:
+    prefer-ip-address: true #使用ip注册
+service-product: #ribbon的负载均衡配置
+  ribbon:
+    #NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RoundRobinRule #轮询机制
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule #随机机制
+    ConnectTimeout: 250 # Ribbon的连接超时时间
+    ReadTimeout: 1000 # Ribbon的数据读取超时时间
+    OkToRetryOnAllOperations: true # 是否对所有操作都进行重试
+    MaxAutoRetriesNextServer: 1 # 切换实例的重试次数
+    MaxAutoRetries: 1 # 对当前实例的重试次数
+logging:  #日志打印
+  level:
+    root: debug

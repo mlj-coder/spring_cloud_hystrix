@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: eureka-server
+server:
+  port: 9000  #端口
+  #配置eureka server
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    register-with-eureka: false #是否将自己注册到注册中心
+    fetch-registry: false #是否要从eureka中获取注册的信息
+    service-url:  #配置暴露给eureka client的请求地址
+      defaultZone: http://${eureka.instance.hostname}:9000/eureka/
+  server:
+    enable-self-preservation: false  #关闭自我保护
+    eviction-interval-timer-in-ms: 4000 #剔除时间间隔,单位:毫秒
