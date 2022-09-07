@@ -22,7 +22,7 @@ public class ProductController {
     public Product findById(@PathVariable Long id){
         Product byId = productService.findById(id);
         try {
-            Thread.sleep(4000l);
+            Thread.sleep(2000l);
         } catch (Exception e) {
             e.printStackTrace();
         }
