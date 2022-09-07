@@ -41,3 +41,9 @@ hystrix:
         isolation:
           thread:
             timeoutInMilliseconds: 4000
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

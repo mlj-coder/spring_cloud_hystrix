@@ -21,11 +21,11 @@ public class ProductController {
     @RequestMapping(value = "/{id}",method = RequestMethod.GET)
     public Product findById(@PathVariable Long id){
         Product byId = productService.findById(id);
-        try {
+        /*try {
             Thread.sleep(2000l);
         } catch (Exception e) {
             e.printStackTrace();
-        }
+        }*/
         byId.setProductName("请求的地址："+ip+",请求的端口："+prot);
         return byId;
     }

@@ -35,6 +35,9 @@ public class OrderController {
     @HystrixCommand
     @RequestMapping(value = "/buy/{id}",method = RequestMethod.GET)
     public Product findById(@PathVariable Long id){
+        if(id != 1){
+            throw new RuntimeException("服务器异常");
+        }
         Product forObject = restTemplate.getForObject("http://service-product/product/"+id, Product.class);
         return forObject;
     }
